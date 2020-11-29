@@ -1,5 +1,5 @@
 
-#include <cstdlib>
+#include <iostream>
 
 namespace func {
     int firstMove(){ //function to choose to who makes the first move.
@@ -7,5 +7,6 @@ namespace func {
 
         return randNum;
     }
+
 
 }
