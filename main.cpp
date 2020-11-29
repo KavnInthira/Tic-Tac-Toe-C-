@@ -17,6 +17,7 @@ int main() {
 
     int firstMove; //if 0 player one is x if 1 then player 2 is
     std::string player; 
+    int player_inputLoop = 0;
 
     std::cout << "     -----------" << std::endl;
     std::cout << "     TIC-TAC-TOE" << std::endl;
@@ -33,18 +34,20 @@ int main() {
 
     if (func::firstMove() == 1) {
         firstMove = 0;
-        std::cout << playerOne << ", you are Player X, you go first" << std::endl;
+        std::cout << playerOne << ", you are player X, you go first" << std::endl;
         std::cout << playerTwo << ", you go second you are O, you go second" << std::endl;
     } else {
         firstMove = 1;
         std::cout << std::endl; //setting 1 or 2 helping program knows who goes first.
-        std::cout << playerTwo << ", you are Player X, you go first" << std::endl;
-        std::cout << playerOne << ", you are Player O, you go second" << std::endl;
+        std::cout << playerTwo << ", you are player X, you go first" << std::endl;
+        std::cout << playerOne << ", you are player O, you go second" << std::endl;
     }
     std::cout << "" << std::endl;
 
     while (i < 1) { 
+        
         std::cout << "Game in process...." << std::endl;
+    
             if(firstMove == 1) { //detecting who goes first.
                 player = "x";
             } else if (firstMove == 0) {
@@ -52,11 +55,21 @@ int main() {
             } else {
                 player = "unknown player";
             }
-        std::cout << player <<" ,choose a location (row, column ex: 1 2): ";
-        std::cin >> row; //taking in user inputs row and column
-        std::cin >> column;
-        std::cout << std::endl;
+
+        
+            std::cout << "Note: [Row min = 0, max = 2]" << std::endl;
+            std::cout << "Note: [Column min = 0, max = 2" << std::endl;
+            std::cout << "Note: 3x3 Square." << std::endl;
+            std::cout << "'" << player << "'" <<" ,choose a location (row, column ex: 1 2): ";
+            std::cin >> row; //taking in user inputs row and column
+            std::cin >> column;
+            std::cout << std::endl; 
+            
+            //TODO: need to make sure user inputs only number of rows 0 - 2 and columns 0 - 2.
+        
+
             for (int i = 0; i < 3; i++){ // loop to print board
+                visualBoard[row][column] = player;
                 for(int j = 0; j < 3; j++) {
                     std::cout << visualBoard[i][j] << " ";
                     if(j == maxVal_perRow) {
@@ -64,13 +77,16 @@ int main() {
                     }
                 }
             }
-        std::cout << std::endl;
+        
+            //todo: need to create a function to check array.
+
+            std::cout << std::endl;
             if(firstMove == 1) { //switching x and o
                 firstMove--;
             } else {
                 firstMove++;
             }
-    }
+        }
    
 
     return 0;
